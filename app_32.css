@@ -1,9 +1,18 @@
 @charset "utf-8";
 *, :is(::after, ::before){margin: 0px;padding: 0px;box-sizing: border-box;outline: none;list-style: none;text-decoration: none;}
 html, body{width: 100%;height: 100%;}
+:root{--colorBar:#000;}
+@media(prefers-color-scheme: dark){
+    :root{--colorBar:rgb(0, 0, 0);}
+    body{background-color: rgb(255, 255, 255);}
+}
+@media(prefers-color-scheme: light){
+    :root{--colorBar:#fff;}
+    body{background-color: #000;}
+}
 body{font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;}
 body #container{width: fit-content;position: fixed;top: 50%;left: 50%;transform: translate(-50%,-50%); display: flex;flex-direction: column;align-items: center;}
     /* start bars */
 body #container .bars{display: flex;justify-content: center;align-items: flex-end;gap: 5px;margin-bottom: 15px;height: 300px;}
-body #container .bars .bar{width: 20px;background-color: #000;}
+body #container .bars .bar{width: 20px;background-color: var(--colorBar);}
 body #container .btns input{padding: 10px;font-size: 16px;margin: 5px;cursor: pointer;}
