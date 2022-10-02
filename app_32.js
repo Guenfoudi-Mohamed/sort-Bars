@@ -33,4 +33,5 @@ function displayBar(arr){
         document.querySelector('body #container .bars').appendChild(bar);
     }
 };
+// console.log(window.matchMedia('(prefers-color-scheme: dark)').matches); detect mode dark or light ?!
 document.addEventListener('DOMContentLoaded',function(){setBarValue()});
