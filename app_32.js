@@ -30,7 +30,7 @@ function sortBarValue(arr){
     stop  = setInterval(function(){
         let x = i+1;
 
-        bars.children[i].classList.add('active');
+        bars.children[i].classList.add('active'); 
         bars.children[x].classList.add('active');
         
         const I = i;
@@ -40,21 +40,23 @@ function sortBarValue(arr){
             bars.insertBefore(bars.children[x],bars.children[i]);
             conteurClear = 0;
         }
-        if(Number(bars.children[i].heightValue) <= Number(bars.children[x].heightValue)){
+        else if(Number(bars.children[i].heightValue) <= Number(bars.children[x].heightValue)){
             conteurClear++;
         }
+        console.log(conteurClear)
+        if(conteurClear >= (bars.childElementCount-1)){clearInterval(stop);}
         if(i == bars.childElementCount-2){
             i = -1;
+            conteurClear = 0;
         }
         ++i;
-        if(conteurClear >= (bars.childElementCount-1)){clearInterval(stop);}
         
         setTimeout(function(){
                 bars.children[X].classList.remove('active');
                 bars.children[I].classList.remove('active');
-        },990);   
+        },390);   
 
-    },1000);
+    },400);
     i = 0;
 }
 // display bars
