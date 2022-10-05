@@ -27,15 +27,20 @@ function sortBarValue(arr){
     let i = 0;
     let conteurClear = 0;
     console.clear();
-    stop  = setInterval(function(){
-        let x = i+1;
+    let lastIndex = Number(bars.childElementCount-1);
 
+    stop  = setInterval(function(){
+        
+        
+        let x = i+1;
+        
+       
         bars.children[i].classList.add('active'); 
         bars.children[x].classList.add('active');
         
         const I = i;
         const X = x;
-        
+
         if(Number(bars.children[i].heightValue) > Number(bars.children[x].heightValue)){
             bars.insertBefore(bars.children[x],bars.children[i]);
             conteurClear = 0;
@@ -43,13 +48,23 @@ function sortBarValue(arr){
         else if(Number(bars.children[i].heightValue) <= Number(bars.children[x].heightValue)){
             conteurClear++;
         }
-        console.log(conteurClear)
-        if(conteurClear >= (bars.childElementCount-1)){clearInterval(stop);}
+        
+        // console.log(lastIndex,conteurClear)
+
+        if((lastIndex == 0) || (lastIndex == conteurClear)){clearInterval(stop)}
+        if(x == lastIndex){
+            lastIndex=lastIndex-1;
+            i=-1;
+            x=i+1;
+        }
+
+        // if(conteurClear >= (bars.childElementCount-1)){clearInterval(stop);}
         if(i == bars.childElementCount-2){
             i = -1;
             conteurClear = 0;
         }
         ++i;
+
         
         setTimeout(function(){
                 bars.children[X].classList.remove('active');
@@ -57,7 +72,6 @@ function sortBarValue(arr){
         },390);   
 
     },400);
-    i = 0;
 }
 // display bars
 function displayBar(arr){
